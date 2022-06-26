@@ -47,8 +47,8 @@ class Map:
         # go through every country and put it's cities on the grid
         for country_data in countries_data:
             country = Country(country_data["name"])
-            for x in range(country_data["ll"]["x"], country_data["ur"]["x"] + 1):
-                for y in range(country_data["ll"]["y"], country_data["ur"]["y"] + 1):
+            for x in range(country_data["lowerLeft"]["x"], country_data["upperRight"]["x"] + 1):
+                for y in range(country_data["lowerLeft"]["y"], country_data["upperRight"]["y"] + 1):
                     if self.grid[x][y] is not None:
                         raise Exception("%s intersects with %s on [%i, %i]" %
                                         (self.grid[x][y].country_name, country.name, x, y))
