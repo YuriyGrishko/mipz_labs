@@ -40,15 +40,15 @@ def parse_input():
     lines = read_lines(data_folder)
     line_index = 0
     while line_index < len(lines):
-        counties_len = int(lines[line_index])
-        if counties_len == 0:
+        countries_len = int(lines[line_index])
+        if countries_len == 0:
             return cases
-        if counties_len > max_countries_amount or counties_len < 1:
+        if countries_len > max_countries_amount or countries_len < 1:
             raise Exception("Error in input for case %i: invalid amount of countries" % (len(cases) + 1))
         line_index += 1
 
         countries_list = []
-        for j in range(counties_len):
+        for j in range(countries_len):
             parsed = parse_country(lines[line_index])
             countries_list.append(parsed)
             line_index += 1
