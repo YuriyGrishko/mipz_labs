@@ -67,18 +67,15 @@ class Map:
 
     def __get_neighbours(self, x, y) -> List[City]:
         neighbours = []
-        if self.__check_if_neighbour_exists(x, y + 1):
-            neighbours.append(self.grid[x][y + 1])
-        if self.__check_if_neighbour_exists(x, y - 1):
-            neighbours.append(self.grid[x][y - 1])
-        if self.__check_if_neighbour_exists(x + 1, y):
-            neighbours.append(self.grid[x + 1][y])
-        if self.__check_if_neighbour_exists(x - 1, y):
-            neighbours.append(self.grid[x - 1][y])
+        self.__add_neighbour_if_exists(neighbours, x, y + 1)
+        self.__add_neighbour_if_exists(neighbours, x, y - 1)
+        self.__add_neighbour_if_exists(neighbours, x + 1, y)
+        self.__add_neighbour_if_exists(neighbours, x - 1, y)
         return neighbours
 
-    def __check_if_neighbour_exists(self, x, y):
-        return self.grid[x][y] is not None
+    def __add_neighbour_if_exists(self, neighbours, x, y):
+        if self.grid[x][y] is not None:
+            neighbours.append(self.grid[x][y])
 
     def __validate_foreign_neighbours(self) -> None:
         if len(self.countries) <= 1:
